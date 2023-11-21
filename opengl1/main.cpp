@@ -9,6 +9,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
+#include <iostream>
 
 #include "painter.h"
 #include "painter_state.h";
@@ -36,7 +37,12 @@ int main() {
 			if (event.type == sf::Event::Closed)
 				window.close();
 			else if (event.type == sf::Event::Resized) {
-				glViewport(0, 0, event.size.width, event.size.height);
+				glViewport(
+					event.size.width/2 - 300, 
+					event.size.height/2 - 300, 
+					600,
+					600
+				);
 			}
 		}
 

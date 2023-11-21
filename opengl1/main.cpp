@@ -54,11 +54,12 @@ int main() {
 
 		ImGui::RadioButton(label(FShader::Const), &painter.state.fshader, FShader::Const);
 		ImGui::RadioButton(label(FShader::Uniform), &painter.state.fshader, FShader::Uniform);
-		ImGui::RadioButton(label(FShader::Gradient), &painter.state.fshader, FShader::Gradient);
+		if (ImGui::RadioButton(label(FShader::Gradient), &painter.state.fshader, FShader::Gradient)) {
+			painter.CreateColorVBOs();
+		}
 		
 		if (painter.state.fshader == FShader::Uniform) {
 			ImGui::ColorPicker3("",painter.state.color);
-
 		}
 
 		window.clear();
